@@ -1,5 +1,4 @@
-package.json
 node_modules
-package-lock.json
+package.json
 .tern-project
-
+package-lock.json
