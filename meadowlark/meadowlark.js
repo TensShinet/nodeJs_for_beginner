@@ -5,31 +5,27 @@ const __main = () => {
     // 什么时候用 单引号, 什么时候用双引号
     app.set('port', process.env.PORT || 3000)
 
-    var handlebars = require('express3-handlebars')
+    var handlebars = require('express-handlebars')
         .create({defaultLayout:'main'})
-    // 
+    //
     app.engine('handlebars', handlebars.engine)
     app.set('view engine', 'handlebars')
     app.get('/', function(req, res){
-        res.type('text/plain')
-        res.send('mlark')
+        res.render('home')
     })
     app.get('/about', function(req, res, next){
-        res.type('text/plain')
-        res.send('about mlark')
+        res.render('about')
     })
 
     app.use(function(req, res){
-        res.type('text/plain')
         res.status(404)
-        res.send('404asdasd Not Found')
+        res.render('404')
     })
 
     app.use(function(err, req, res, next){
         console.error(error.stack)
-        res.type('text/plain')
         res.status(500)
-        res.send('500 - Serve Error')
+        res.render('500')
     })
 
     app.listen(app.get('port'), function(){
