@@ -5,7 +5,7 @@ const __main = () => {
     // 什么时候用 单引号, 什么时候用双引号
     app.set('port', process.env.PORT || 3000)
 
-    var handlebars = require('express-handlebars')
+    var handlebars = require('express3-handlebars')
         .create({defaultLayout:'main'})
     //
     app.engine('handlebars', handlebars.engine)
