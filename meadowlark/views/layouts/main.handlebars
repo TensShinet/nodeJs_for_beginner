@@ -3,8 +3,30 @@
     <head>
         <meta charset="utf-8">
         <title>mlark travel</title>
+        {{#if showText}}
+            <link rel="stylesheet" href="/vendor/mocha.css">
+        {{/if}}
+        <script src="//code.jquery.com/jquey-2.0.2.mim.js">
+        </script>
     </head>
     <body>
         {{{body}}}
+        {{#if showTests}}
+            <div id="mocha">
+            </div>
+            <script src="/vendor/mocha.js"></script>
+            <script src="/vendor/chai.js"></script>
+            <script type="text/javascript">
+                mocha.ui('tdd')
+                var assert = chai.assert
+            </script>
+            <script src="/qa/tests-global.js"></script>
+            {{#if pageTestScript}}
+                <script src="pageTestScript"></script>
+            {{/if}}
+            <script type="text/javascript">
+                mocha.run()
+            </script>
+        {{/if}}
     </body>
 </html>
